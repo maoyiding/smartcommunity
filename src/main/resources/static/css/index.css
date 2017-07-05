@@ -1,0 +1,131 @@
+*{
+    margin:0;
+    padding:0;
+}
+/*#container{*/
+    /*display: flex;*/
+    /*display:-webkit-flex;*/
+    /*flex-flow: row wrap;*/
+/*}*/
+
+.top{
+    background-color: #f34367;
+    width:100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+    color: #FFffff;
+    font-family: "宋体";
+}
+.top .community{
+    ;
+    padding-left: 1.5em;
+}
+
+.top .conversation{
+    padding-right: 1.5em;
+}
+.content{
+    background-color: #FFffff;
+    width: 100%;
+    padding-top: 10px;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column wrap;
+    justify-content: flex-end;
+}
+.advertisement {
+    width: 100%;
+    height: 30%;
+    overflow: hidden;
+
+}
+/*.swiper-wrapper{*/
+    /*width: 100%;*/
+    /*height: 400px;*/
+/*}*/
+.swiper-slide {
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.content .tools {
+    width: auto;
+    padding-left: 7em;
+    padding-right: 7em;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    text-align: center;
+    padding-top: 3em;
+    margin-left: 2px;
+    margin-right: 2px;
+
+}
+.content .tools a{
+    text-decoration: none;
+    color: black;
+}
+.content .content-foot{
+    padding-top: 1em;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    width: auto;
+}
+.content-foot .content-foot-left{
+    height: 200px;
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+    margin-left: 1.2em;
+    width: 70%;
+    border: solid 1px black;
+}
+.content-foot .content-foot-left dd{
+    padding-left: 2em;
+    line-height: 2em;
+}
+.content-foot .content-foot-right{
+    height: 200px;
+    width:30%;
+    margin-left: 1em;
+    margin-right:1em;
+}
+.content-foot .content-foot-right div{
+    border: solid 1px black;
+    height: 52.2px;
+    margin-bottom: 1.22em;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+}
+.content-foot .content-foot-right div dd{
+
+}
+.foot{
+    margin-top: 1em;
+    padding-left: 4em;
+    padding-right: 4em;
+    margin-bottom: 1em;
+    width: auto;
+    color: #fa98a2;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    text-align: center;
+}

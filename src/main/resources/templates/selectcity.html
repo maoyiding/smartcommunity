@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>菜单</title>
+    <!--<link rel="stylesheet" href="css/selectcity.css"/>-->
+
+    <!--<script src="js/selectcity.js"></script>-->
+
+    <link rel="stylesheet" href="css/city.css"/>
+    <script src="js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <div class="choice">
+        <div class="header">
+            <div>选择城市</div>
+            <div></div>
+        </div>
+        <div class="menu">
+            <span th:each="word : ${words}">
+                <div class="word" th:id="${word}"></div>
+            </span>
+            <ul class="city" th:each="cityList :${cities}">
+                <li class="ua" th:each="city : ${cityList}">
+                <div class="la"  th:id="${city.cityId}" th:text="${city.cityName}"></div>
+                    <ul class="c" >
+                        <li  th:each="comm :${city.community}">
+                            <div class="comm" th:text="${comm.community}" th:id="${comm.communityId}" ></div>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+        <form id="paramsForm" action="/finishSelect" method="POST">
+  <!--          <input type="hidden" name="phone"  th:value="${people.phone}"/>
+            <input type="hidden" name="phone"  th:value="${people.phone}"/>
+            <input type="hidden" name="phone"  th:value="${people.phone}"/>
+            <input type="hidden" name="phone"  th:value="${people.phone}"/>
+            <input type="hidden" name="phone"  th:value="${people.phone}"/>
+            <input type="hidden" name="phone"  th:value="${people.phone}"/>
+            <input type="hidden" name="validation" th:value="${validation}"/>
+            <input type="hidden" name="password2"  th:value="${password2}"/>-->
+
+            <input type="hidden" name="selectCityName"/>
+            <input type="hidden" name="selectCommunity"/>
+        </form>
+        <!-- -->
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            var changeType=$('.city').find('div');
+            $.each(changeType,function(){
+                $(this).on('click',function(){
+                    if(false==$(this).next().is(':visible')){
+                        $('.city ul').slideUp(0);
+                    }
+                    $(this).next().slideToggle(0);
+                });
+            });
+            var hoverType=$('.city .c').find('div');
+            $.each(hoverType,function(){
+                $(this).mouseenter(function(){
+                    $(this).css('color',"#F44268")
+                })
+                $(this).mouseleave(function(){
+                    $(this).css('color',"black")
+                })
+            })
+        })
+        //首字母排序
+        //<![CDATA[
+        $(function () {
+            var divs =new Array();
+            var i=0;
+            $(".word").each(function () {
+                var word=$(this).attr("id");
+                div="<div style=' width: 100%;height: 30px;line-height: 30px;background-color: #ffd5d8;text-indent: 1em;font-size: 1.5em;margin-top: 2px;margin-bottom: 2px;' class='first' id='#"+word+"'>"+word+"</div>";
+                divs[i]=div;
+                i++
+            })
+            var i=0;
+            $(".city").each(function () {
+                $(this).before(divs[i]);
+                i++;
+            })
+        })
+        //]]>
+
+        $(".comm").click(function (){
+            var selectCommunity= $(this).text();
+            var selectCityName = $(this).parent().parent().prev().text();
+//            var selectCityName= $(".la").text();
+            $("#paramsForm input[name='selectCommunity']").val(selectCommunity);
+            $("#paramsForm input[name='selectCityName']").val(selectCityName);
+            $("#paramsForm").submit();
+        })
+    </script>
+</body>
+</html>

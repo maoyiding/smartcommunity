@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>首页</title>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/swiper.min.css"/>
+    <script src="js/jquery-3.1.1.min.js" ></script>
+</head>
+<body>
+    <div id="container">
+        <div class="top">
+
+            <div class="community">
+                <!--左上角判断-->
+                <p class="login" th:text="${session.people == null ? '请登录' : session.people.getCityCommunity().split('-')[1]}"></p>
+
+            </div>
+
+            <div class="title">
+                <h3>迷家</h3>
+            </div>
+
+            <div class="conversation">
+                <a><img src="/img/chat.jpg" height="50" width="50"/></a>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="advertisement swiper-container swiper-container-horizontal" >
+
+                    <div class="swiper-wrapper" >
+                        <div class="swiper-slide" th:each="banner : ${banner}">
+                            <img th:src="${banner.url}" height="90%" width="90%"/>
+                        </div>
+                    </div>
+                <!--&lt;!&ndash;<div class="swiper-slide" ><img th:src=@"http://osjlnn3k1.bkt.clouddn.com/103R4GP-13.jpg" src="/img/RE18ceK.jpg" height="90%" width="90%"/></div>&ndash;&gt;-->
+                        <!--<div class="swiper-slide" ><img src="http://osjlnn3k1.bkt.clouddn.com/103R4GP-13.jpg" height="90%" width="90%"/></div>-->
+                        <!--&lt;!&ndash;<div class="swiper-slide" ><img th:src=@"http://osjlnn3k1.bkt.clouddn.com/36769-your_name.-PC.jpg" src="/img/RE18ceK.jpg" height="90%" width="90%"/></div>&ndash;&gt;-->
+                        <!--<div class="swiper-slide" ><img src="http://osjlnn3k1.bkt.clouddn.com/36769-your_name.-PC.jpg"  height="90%" width="90%"/></div>-->
+                        <!--&lt;!&ndash;<div class="swiper-slide" ><img src="../static/img/REHyjD.jpg" height="95%" width="95%"/></div>&ndash;&gt;-->
+                    <!-- Add Pagination -->
+                    <!--<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">-->
+                        <!--<span class="swiper-pagination-bullet"></span>-->
+                        <!--<span class="swiper-pagination-bullet"></span>-->
+                        <!--&lt;!&ndash;<span class="swiper-pagination-bullet"></span>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="swiper-pagination-bullet"></span>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="swiper-pagination-bullet"></span>&ndash;&gt;-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash; Add Arrows &ndash;&gt;-->
+                    <!--<div class="swiper-button-next"></div>-->
+                    <!--<div class="swiper-button-prev"></div>-->
+
+            </div>
+            <div class="tools">
+                <a href="#">
+                    <dl>
+                        <dt><img src="/img/社区超市.jpg" height="120" width="120"/></dt>
+                        <dd>社区超市</dd>
+                    </dl>
+                </a>
+
+                <a href="#">
+                    <dl>
+                        <dt><img src="/img/快递寄送.jpg" height="120" width="120"/></dt>
+                        <dd><a href="#">快递寄送</a></dd>
+                    </dl>
+                </a>
+
+                <a href="#">
+                    <dl>
+                        <dt><img src="/img/家政服务.jpg" height="120" width="120"/></dt>
+                        <dd><a href="#">家政服务</a></dd>
+                    </dl>
+                </a>
+                <a href="#">
+                    <dl>
+                        <dt><img src="/img/便民洗涤.jpg" height="120" width="120"/></dt>
+                        <dd><a href="#">便民洗涤</a></dd>
+                    </dl>
+                </a>
+
+                <a href="#">
+                    <dl>
+                        <dt><img src="/img/预约洗车.jpg" height="120" width="120"/></dt>
+                        <dd><a href="#">洗车预约</a></dd>
+                    </dl>
+                </a>
+
+                <a href="#">
+                    <dl>
+                        <dt><img src="/img/社区二手.jpg" height="120" width="120"/></dt>
+                        <dd><a href="#">社区二手</a></dd>
+                    </dl>
+                </a>
+
+                <a href="#">
+                    <dl>
+                        <dt><img src="/img/物业服务.jpg" height="120" width="120"/></dt>
+                        <dd><a href="#">物业服务</a></dd>
+                    </dl>
+                </a>
+
+                <a href="#">
+                    <dl>
+                        <dt><img src="/img/装修服务.jpg" height="120" width="120"/></dt>
+                        <dd><a href="#">装修服务</a></dd>
+                    </dl>
+                </a>
+            </div>
+            <div class="content-foot">
+                <div class="content-foot-left">
+                    <dl>
+                        <dt>物业工作展示</dt>
+                        <dd>1</dd>
+
+                    </dl>
+                </div>
+                <div class="content-foot-right">
+                    <div>
+                        <dl >
+                            <dt>业主投票</dt>
+
+                        </dl>
+                    </div>
+                    <div>
+                        <dl >
+                            <dt>小区公告</dt>
+
+                        </dl>
+                    </div>
+                    <div>
+                        <dl >
+                            <dt>业务报修</dt>
+
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="foot">
+            <dl>
+                <dt><img src="/img/home.jpg" height="76" width="76"/></dt>
+                <dd>主页</dd>
+            </dl>
+            <dl>
+                <dt><img src="/img/order.jpg" height="76" width="76"/></dt>
+                <dd>订单</dd>
+            </dl>
+            <dl>
+                <dt><img src="/img/i.jpg" height="76" width="76"/></dt>
+                <dd>我的</dd>
+            </dl>
+            <dl>
+                <dt><img src="/img/other.jpg" height="76" width="76"/></dt>
+                <dd>更多</dd>
+            </dl>
+        </div>
+    </div>
+    <script src="/js/swiper-3.4.2.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+//            pagination: '.swiper-pagination',
+//            nextButton: '.swiper-button-next',
+//            prevButton: '.swiper-button-prev',
+            paginationClickable: true,
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: 3000,
+            autoplayDisableOnInteraction: false
+        });
+
+        $(".community").click(function (){
+            window.location= "/user";
+        })
+
+    </script>
+</body>
+</html>

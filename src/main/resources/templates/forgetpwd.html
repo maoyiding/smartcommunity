@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>修改密码</title>
+    <link rel="stylesheet" href="/css/forgetpwd.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <div class="title">
+        <h3>找回密码</h3>
+    </div>
+
+    <div class="newpwd">
+        <form action="/updatePwd" method="post">
+            <p>
+                <label for="phone">手机号码:</label>
+                <input class="text" type="text" name = "phone" id="phone"/>
+            </p>
+            <p>
+                <label for="message">短信验证码:</label>
+                <input class="message" type="text" id="message"/>
+                <input class="checkCode" type="button" id="btn" value="获取验证码"/>
+            </p>
+            <p>
+                <label for="pwd1">新密码：</label>
+                <input class="password"  type="password" id="pwd1" name = "password"/>
+            </p>
+            <p>
+                <label for="pwd2">确认新密码：</label>
+                <input class="password2"  type="password" id="pwd2"/>
+            </p>
+            <p>
+                <input type="submit" class="submit" name="submit" value="找回密码"/>
+            </p>
+
+        </form>
+    </div>
+    <script type="text/javascript">
+        var interval = null;
+        window.onload = function () {
+            var btn = document.getElementById('btn');
+            btn.onclick = function () {
+                if (!interval) {
+                    this.style.backgroundColor = '#f54866';
+                    this.style.borderRadius = '25px';
+                    this.style.color = 'white';
+                    this.disabled = "disabled";
+
+                    var rand = Math.floor(Math.random() * 8999 + 1000);
+                    btn.value = rand;
+                    document.getElementById("message").value = rand;
+                }
+            }
+        }
+        $("form :input").blur(function() {
+            if($(this).is("#pwd2")){
+                var pwd1 = $("#pwd1").val().trim();
+                var pwd2 = $("#pwd2").val().trim();
+                if(pwd1 != pwd2){
+                    alert("两次密码不一样");
+                    return false;
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

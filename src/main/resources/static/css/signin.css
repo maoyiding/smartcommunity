@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #f54866;
+}
+
+.header{
+    margin-top: 1em;
+    /*background-color: chartreuse;*/
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 3em;
+}
+
+.header h3{
+
+    padding-left: 45%;
+    width: 45%;
+}
+.header h5 a{
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    color: white;
+    text-decoration: none;
+}
+
+.logo{
+    padding-top: 2em;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+.dolog {
+    padding-top: 2em;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    line-height: 5em;
+    color: white;
+}
+
+.dolog .text{
+    margin-left: 1em;
+    border:0;
+    border-bottom:solid 1px white;
+    background-color: #f54866;
+    font-size: 3em;
+    color: white;
+}
+.dolog .p{
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: center
+}
+.dolog .submit{
+    margin-top: 3em;
+    width: 15em;
+    height: 2em;
+    border:0;
+    border:solid 1px white;
+    background-color: #f54866;
+    border-radius: 20px;
+    font-size: 3em;
+    color: white;
+}
+.dolog .forget{
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: center
+}
+.dolog .forget a{
+    margin-top: 2em;
+    /*margin-bottom: 10em;*/
+    text-decoration: none;
+    color: #FFffff;
+    font-size: 3em;
+}
