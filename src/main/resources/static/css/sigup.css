@@ -31,7 +31,7 @@ body{
 }
 .register label{
     margin-top:1em;
-    font-size: 2em;
+    font-size: 1em;
 }
 .register .text,.password,.password2{
     width:100%;
