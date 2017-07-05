@@ -49,7 +49,7 @@
     </div>
     <script type="text/javascript">
 
-        var sleep = 60, interval = null;
+        var interval = null;
         window.onload = function ()
         {
             var btn = document.getElementById ('btn');
@@ -89,7 +89,7 @@
         }
 
 
-
+        //失去焦点，对文本框进行判断
         $("form :input").blur(function() {
 
             if($(this).is("#phone")){
@@ -127,6 +127,8 @@
                 }
             }
         });
+
+        //创建点击事件，数据提交到后台session
         $("#communitary").click(function () {
             $("#registerForm").attr("action","/address");
             $("#registerForm").submit();

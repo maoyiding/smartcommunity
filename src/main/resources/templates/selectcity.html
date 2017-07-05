@@ -35,7 +35,7 @@
         </div>
 
 
-
+        <!--创建隐藏表单，传输数据-->
         <form id="paramsForm" action="/finishSelect" method="POST">
   <!--          <input type="hidden" name="phone"  th:value="${people.phone}"/>
             <input type="hidden" name="phone"  th:value="${people.phone}"/>
@@ -90,7 +90,7 @@
             })
         })
         //]]>
-
+        //js提交表单数据到后台
         $(".comm").click(function (){
             var selectCommunity= $(this).text();
             var selectCityName = $(this).parent().parent().prev().text();

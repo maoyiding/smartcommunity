@@ -88,7 +88,7 @@ public class PeopleController {
             return "signup";
         }
 
-        //循环遍历出所有内容，获取
+        //循环遍历出所有内容，判断是否手机号重复
         for(People peo : u ){
             if(phone.equals(peo.getPhone())){
                 return "signup";
