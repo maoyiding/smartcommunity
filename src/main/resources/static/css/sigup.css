@@ -49,10 +49,11 @@ body{
     color: white
 }
 .register .message,.checkCode{
-     display: flex;
-     display: -webkit-flex;
-     flex-flow: row nowrap;
-     justify-content: center;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    text-align: center;
  }
 .register .message{
     width:100%;

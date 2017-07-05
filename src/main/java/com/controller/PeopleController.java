@@ -109,14 +109,18 @@ public class PeopleController {
 
     @PostMapping("/updatePwd")
     public String updatePwd(People people,HttpServletRequest request){
-        People u =  peopleService.selectPeopleByPhone(people);
+        List<People> u =  peopleService.selectPeople();
         String phone = request.getParameter("phone");
         if( phone == "") {
             return "forgetpwd";
         }
-        if(!phone.equals(u.getPhone())){
-            return "forgetpwd";
+        //
+        for(People peo : u ){
+            if( !phone.equals(peo.getPhone())){
+                return "forgetpwd";
+            }
         }
+
         peopleService.updataPeoplePasswordByPhone(people);
         return "signin";
 
@@ -154,6 +158,8 @@ public class PeopleController {
 //        model.addAttribute("password2",request.getParameter("password2"));
 
         request.getSession().setAttribute("people",people);
+
+        //People实体类没有属性，单独取值
         request.getSession().setAttribute("validation",request.getParameter("validation"));
         request.getSession().setAttribute("password2",request.getParameter("password2"));
 
@@ -169,6 +175,7 @@ public class PeopleController {
 
     @PostMapping("/finishSelect")
     public String finishSelect(String selectCityName,String selectCommunity,HttpServletRequest request,  RedirectAttributes attr){
+            //把值重新赋值给注册页面，单独复制
             People people =  (People)request.getSession().getAttribute("people");
             attr.addFlashAttribute("phone",people.getPhone());
             attr.addFlashAttribute("autonym",people.getAutonym());
