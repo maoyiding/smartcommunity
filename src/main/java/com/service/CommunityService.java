@@ -18,5 +18,5 @@ public interface CommunityService {
      * 添加社区
      * @return 添加社区成功
      */
-    boolean addCommunity();
+    boolean addCommunity(Community community);
 }

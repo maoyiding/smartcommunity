@@ -49,6 +49,7 @@ public class PeopleController {
     public String toUserIndex(Model model){
         List<Banner> banner = bannerService.getAll();
 
+
         model.addAttribute("banner",banner);
 
         return "index";
@@ -157,6 +158,7 @@ public class PeopleController {
 //        model.addAttribute("validation",request.getParameter("validation"));
 //        model.addAttribute("password2",request.getParameter("password2"));
 
+        //获取实体类中有的字段
         request.getSession().setAttribute("people",people);
 
         //People实体类没有属性，单独取值

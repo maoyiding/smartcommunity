@@ -16,5 +16,5 @@ public class Banner implements Serializable{
 
     private int id;
     private String url;
-    
+    private int status;
 }

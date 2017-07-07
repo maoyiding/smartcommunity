@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit"/>
+<title></title>
+<link rel="stylesheet" href="css/pintuer.css"/>
+<link rel="stylesheet" href="css/admin.css"/>
+<script src="js/jquery.js"></script>
+<script src="js/pintuer.js"></script>
+  <!--<script src="js/jquery-3.1.1.min.js"></script>-->
+  <script src="js/qiniu.js"></script>
+</head>
+<body>
+<div class="panel admin-panel">
+  <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong></div>
+  <div class="padding border-bottom">  
+  <button type="button" class="button border-yellow" onclick="window.location.href='#add'"><span class="icon-plus-square-o"></span> 添加内容</button>
+  </div>
+  <table class="table table-hover text-center">
+    <tr>
+      <th width="10%">ID</th>
+      <th width="20%">图片</th>
+      <th width="15%">名称</th>
+      <th width="20%">描述</th>
+      <th width="10%">启用</th>
+      <th width="15%">操作</th>
+    </tr>
+   <form action="modify" method="post" th:each="banner : ${banner}">
+    <tr>
+      <td th:text="${banner.id}" ></td>
+      <input th:value="${banner.id}" name="id" type="hidden"/>
+      <td><img  th:src="${banner.url}" alt="" width="120" height="50" /></td>
+      <td>首页焦点图</td>
+      <td>描述文字....</td>
+      <td th:text="${banner.status == 0 ? '未启用' : '启用'}" ></td>
+      <input th:value="${banner.status}" name="status" type="hidden"/>
+      <td><div class="button-group">
+      <input type="submit" class="button border-main" value="修改"/>
+      <a class="button border-red" href="javascript:void(0)" onclick="return del(1,1)"><span class="icon-trash-o"></span> 删除</a>
+      </div></td>
+    </tr>
+   </form>
+    <!--<tr>-->
+      <!--<td>2</td>     -->
+      <!--<td><img src="images/11.jpg" alt="" width="120" height="50" /></td>     -->
+      <!--<td>首页焦点图</td>-->
+      <!--<td>描述文字....</td>-->
+      <!--<td>1</td>-->
+      <!--<td><div class="button-group">-->
+      <!--<a class="button border-main" href="#add"><span class="icon-edit"></span> 修改</a>-->
+      <!--<a class="button border-red" href="javascript:void(0)" onclick="return del(1,1)"><span class="icon-trash-o"></span> 删除</a>-->
+      <!--</div></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td>3</td>     -->
+      <!--<td><img src="images/11.jpg" alt="" width="120" height="50" /></td>     -->
+      <!--<td>首页焦点图</td>-->
+      <!--<td>描述文字....</td>-->
+      <!--<td>1</td>-->
+      <!--<td><div class="button-group">-->
+      <!--<a class="button border-main" href="#add"><span class="icon-edit"></span> 修改</a>-->
+      <!--<a class="button border-red" href="javascript:void(0)" onclick="return del(1,1)"><span class="icon-trash-o"></span> 删除</a>-->
+      <!--</div></td>-->
+    <!--</tr>-->
+    <!---->
+  </table>
+</div>
+<script type="text/javascript">
+function del(id,mid){
+	if(confirm("您确定要删除吗?")){
+	
+	}
+}
+</script>
+<div class="panel admin-panel margin-top" id="add">
+  <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 增加内容</strong></div>
+  <div class="body-content">
+    <form method="post" class="form-x" action="">
+      <div class="form-group">
+        <div class="label">
+          <label>标题：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" value="" name="title" data-validate="required:请输入标题"/>
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>URL：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" name="url" value=""/>
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>图片：</label>
+        </div>
+        <div class="field">
+          <input type="text" id="url1" name="img" class="input tips" style="width:25%; float:left;" value=""
+                 data-toggle="hover" data-place="right" data-image=""/>
+          <div  id="uploadButton"  >
+            <div class="button bg-blue margin-left "  style="float:left;">+ 浏览上传</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="label">
+            <label>描述：</label>
+          </div>
+          <div class="field">
+            <textarea type="text" class="input" name="note" style="height:120px;" value=""></textarea>
+            <div class="tips"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="label">
+            <label>排序：</label>
+          </div>
+          <div class="field">
+            <input type="text" class="input w50" name="sort" value="0" data-validate="required:,number:排序必须为数字"/>
+            <div class="tips"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="label">
+            <label></label>
+          </div>
+          <div class="field">
+            <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        var _token = null;
+
+        $.ajax({
+            url: '/token',
+            type: 'get',
+            success: function (data) {
+                _token = data;
+                console.debug('A: ' + _token);
+            }
+        });
+
+
+        // 上传空间URL
+        //var uploadSpace = 'http://om1bngllf.bkt.clouddn.com';
+        var uploadSpace = 'http://osjlnn3k1.bkt.clouddn.com';
+
+        qiniu.config({
+            url: uploadSpace,
+            uploadUrl: 'up-z0.qiniu.com' // 七牛统一的一个上传域名，固定
+        });
+
+
+        qiniu.bind($('#uploadButton'), {
+            filter: 'image'
+        }).on('file', function(file) {
+
+            console.debug('---');
+
+            var imagesBucket = qiniu.bucket('learning', {
+                putToken: _token
+            });
+
+            console.debug('B: ' + _token);
+
+            // 上传文件名
+//                var fileName = 'abc_' + new Date().getMilliseconds() + '.jpg';
+
+//                var fileName
+
+            console.debug(file);
+
+            var fileName = file.name;
+
+            //传入路径位置
+//                fileName = 'images/' + fileName;
+
+            fileName = fileName;
+
+//                    return;
+
+            console.debug('文件名：'  + fileName);
+
+
+            // Upload
+            imagesBucket.putFile(fileName, file)
+                .then(
+                    function(reply) {
+                        // 上传成功
+//                            console.dir(reply);
+                        console.debug(reply.hash);
+                        console.debug(reply.key);
+                        var se = new Date().getMilliseconds();
+                        $('#result').html(uploadSpace + '/' + fileName + '?v=' + se);
+                        $('#result').prop('href', uploadSpace + '/' + fileName + '?v=' + se);
+                        var url = uploadSpace + '/' + fileName + '?v=' + se;
+                        var data = "{\"url\":\""+url+"\"}"
+                        $.ajax({
+                            type: 'POST',
+                            url: "/addBanner",
+                            data: data,
+                            contentType:"application/json",
+                            success:function(data){
+                                alert(data);
+                                console.info(data);
+                            },
+                            error:function (data,status,er) {
+                                console.info(data);
+                            }
+                        })
+                    },
+                    function(err) {
+                        // 上传失败
+                        console.error(err);
+                    }
+                );
+        });
+
+    });
+</script>
+</body></html>

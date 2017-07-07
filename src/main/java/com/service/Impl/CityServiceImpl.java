@@ -24,7 +24,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public boolean addCity() {
-        return this.cityMapper.addCity();
+    public boolean addCity(City city) {
+        return this.cityMapper.addCity(city);
     }
 }

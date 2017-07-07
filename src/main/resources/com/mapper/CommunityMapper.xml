@@ -6,4 +6,8 @@
     <select id="getAllCommunityByCityId" parameterType="int" resultType="Community">
         SELECT * FROM community WHERE cityId = #{cityId}
     </select>
+
+    <insert id="addCommunity" parameterType="Community">
+        INSERT INTO community(community,cityId) VALUE (#{community},#{cityId})
+    </insert>
 </mapper>

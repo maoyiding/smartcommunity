@@ -23,14 +23,14 @@
             </span>
             <ul class="city" th:each="cityList :${cities}">
                 <li class="ua" th:each="city : ${cityList}">
-                <div class="la"  th:id="${city.cityId}" th:text="${city.cityName}"></div>
+                  <div class="la"  th:id="${city.cityId}" th:text="${city.cityName}"></div>
                     <ul class="c" >
                         <li  th:each="comm :${city.community}">
                             <div class="comm" th:text="${comm.community}" th:id="${comm.communityId}" ></div>
                         </li>
                     </ul>
-
                 </li>
+
             </ul>
         </div>
 
@@ -74,21 +74,21 @@
         })
         //首字母排序
         //<![CDATA[
-        $(function () {
-            var divs =new Array();
-            var i=0;
-            $(".word").each(function () {
-                var word=$(this).attr("id");
-                div="<div style=' width: 100%;height: 30px;line-height: 30px;background-color: #ffd5d8;text-indent: 1em;font-size: 1.5em;margin-top: 2px;margin-bottom: 2px;' class='first' id='#"+word+"'>"+word+"</div>";
-                divs[i]=div;
-                i++
-            })
-            var i=0;
-            $(".city").each(function () {
-                $(this).before(divs[i]);
-                i++;
-            })
-        })
+//        $(function () {
+//            var divs =new Array();
+//            var i=0;
+//            $(".word").each(function () {
+//                var word=$(this).attr("id");
+//                div="<div style=' width: 100%;height: 30px;line-height: 30px;background-color: #ffd5d8;text-indent: 1em;font-size: 1.5em;margin-top: 2px;margin-bottom: 2px;' class='first' id='#"+word+"'>"+word+"</div>";
+//                divs[i]=div;
+//                i++
+//            })
+//            var i=0;
+//            $(".la").each(function () {
+//                $(this).before(divs[i]);
+//                i++;
+//            })
+//        })
         //]]>
         //js提交表单数据到后台
         $(".comm").click(function (){

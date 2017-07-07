@@ -13,4 +13,24 @@
         SELECT * FROM banner
     </select>
 
+    <update id="openBanner" parameterType="Banner" >
+            UPDATE banner
+            <trim prefix="SET" suffixOverrides=",">
+                <if test="status!=null">status = 1</if>
+            </trim>
+            WHERE id = #{id}
+    </update>
+
+    <update id="closeBanner" parameterType="Banner" >
+                UPDATE banner
+                <trim prefix="SET" suffixOverrides=",">
+                    <if test="status!=null">status = 0</if>
+                </trim>
+                WHERE id = #{id}
+    </update>
+
+    <select id="getBannerById" parameterType="int" resultType="Banner">
+        SELECT * FROM banner WHERE id = #{id}
+    </select>
+
 </mapper>

@@ -22,6 +22,6 @@ public interface CityMapper {
      * 添加城市
      * @return
      */
-    boolean addCity();
+    boolean addCity(City city);
 
 }

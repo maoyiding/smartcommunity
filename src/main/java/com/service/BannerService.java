@@ -1,6 +1,7 @@
 package com.service;
 
 import com.domain.Banner;
+import com.domain.City;
 
 import java.util.List;
 
@@ -20,4 +21,24 @@ public interface BannerService {
      * @return
      */
     List<Banner> getAll();
+
+    /**
+     * 开启前台照片
+     * @return
+     */
+    boolean openBanner(Banner banner);
+
+    /**
+     * 关闭前台照片
+     * @return
+     */
+    boolean closeBanner(Banner banner);
+
+    /**
+     * 根据ID查找图片
+     * @param id
+     * @return
+     */
+    List<Banner> getBannerById(int id);
+
 }

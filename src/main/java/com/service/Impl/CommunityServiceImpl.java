@@ -24,7 +24,7 @@ public class CommunityServiceImpl implements CommunityService{
     }
 
     @Override
-    public boolean addCommunity() {
-        return this.communityMapper.addCommunity();
+    public boolean addCommunity(Community community) {
+        return this.communityMapper.addCommunity(community);
     }
 }

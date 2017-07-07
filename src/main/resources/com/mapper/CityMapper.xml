@@ -9,7 +9,7 @@
     </select>
 
     <insert id="addCity" parameterType="City">
-        INSERT INTO city(cityId,orderWrold,cityName)
-        VALUE(#{cityId},#{orderWrold},#{cityName})
+        INSERT INTO city(orderWrold,cityName)
+        VALUE(#{orderWrold},#{cityName})
     </insert>
 </mapper>

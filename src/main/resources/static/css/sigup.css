@@ -32,9 +32,11 @@ body{
 .register label{
     margin-top:1em;
     font-size: 3em;
+    margin-left: 10%;
 }
 .register .text,.password,.password2{
-    width:100%;
+    width:80%;
+    margin-left: 10%;
     /*margin-top: 1em;*/
     display: flex;
     display: -webkit-flex;
@@ -50,6 +52,7 @@ body{
      height: 2em;
 }
 .register .message,.checkCode{
+    margin-left: 10%;  
     display: flex;
     display: -webkit-flex;
     flex-flow: row nowrap;
@@ -71,7 +74,8 @@ body{
     color: white
 }
 .register .submit{
-    width:100%;
+    width:80%;
+    margin-left:10%;
     /*margin-top: 3em;*/
     /*width: 13em;*/
     height: 3em;
