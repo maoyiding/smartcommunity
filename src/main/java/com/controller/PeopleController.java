@@ -191,7 +191,9 @@ public class PeopleController {
 
     }
 
-
-
+    @GetMapping("/toStore")
+    public String toStore(){
+        return "/store";
+    }
 
 }

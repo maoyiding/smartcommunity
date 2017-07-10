@@ -7,13 +7,12 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * Created by Administrator on 2017/6/28.
+ * Created by maoyiding on 17-7-10.
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Community implements Serializable {
-    private int communityId;
-    private String community;
-    private int cityId;
+public class Category implements Serializable {
+    private int categoryId;
+    private String category;
 }
