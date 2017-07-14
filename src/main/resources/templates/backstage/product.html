@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+
+    <link rel="stylesheet" href="css/category.css"/>
+</head>
+<body>
+<div id="dcMain">
+    <!-- 当前位置 -->
+    <div id="urHere"><strong>商品列表</strong></div>
+    <div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
+        <h3><a href="/toAddproduct" class="actionBtn add">添加商品</a>商品列表</h3>
+        <div id="list">
+            <form name="action" method="post" action="product.php?rec=action">
+                <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+                    <tr>
+                        <th width="22" align="center"><input name='chkall' type='checkbox' id='chkall'
+                                                             onclick='selectcheckbox(this.form)' value='check'/></th>
+                        <th width="40" align="center">编号</th>
+                        <th align="left" width="120">商品名称</th>
+                        <th width="150" align="center">商品描述</th>
+                        <th width="80" align="center">商品分类</th>
+                        <th width="80" align="center">操作</th>
+                    </tr>
+                    <div th:each="categorylist : ${categories}">
+                        <div th:each="category : ${categorylist}">
+                            <div th:each="goods : ${category.goods}">
+                                <tr>
+                                    <td align="center"><input type="checkbox" name="checkbox[]" th:value="${goods.goodsId}"/></td>
+                                    <td align="center" th:text="${goods.goodsId}" th:value="${goods.goodsId}"></td>
+                                    <td th:text="${goods.goods}"></td>
+                                    <td align="center" th:text="${goods.description}"></td>
+                                    <td align="center" th:text="${category.category}"></td>
+                                    <td align="center">
+                                        <b >编辑</b> | <b>上架</b> | <b>下架</b>
+                                    </td>
+                                </tr>
+                            </div>
+                        </div>
+                    </div>
+                </table>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
