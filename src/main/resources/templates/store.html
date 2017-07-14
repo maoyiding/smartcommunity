@@ -52,112 +52,38 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide blue-slide">
                     <div class="main">
-                        <div class="left-menu">
-                            <ul>
-                                <li class="active">营养套餐<span class="num-price"></span></li>
-                                <li>酒水饮料</li>
-                                <li>酒水饮料</li>
-                                <li>酒水饮料</li>
-                                <li>酒水饮料</li>
-                                <li>酒水饮料</li>
-                                <li>酒水饮料</li>
-                                <li>酒水饮料</li>
-                                <li>酒水饮料</li>
-                                <li>酒水饮料</li>
-                                <li>酒水饮料</li>
-
-
-                            </ul>
+                        <div class="left-menu" >
+                            <div th:each="categorylist : ${categories}">
+                                <ul th:each="category : ${categorylist}">
+                                    <li th:text="${category.category}"></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="con">
-                            <div class="right-con con-active">
-                                <ul>
-                                    <li>
-                                        <div class="menu-img"><img src="img/pic.png" width="55" height="55" /></div>
-                                        <div class="menu-txt">
-                                            <h4>宫保鸡丁</h4>
-                                            <p class="list1">家常菜</p>
-                                            <p class="list2">
-                                                <b>￥25</b>
-                                            <div class="btn">
-                                                <button class="minus">
-                                                    <strong></strong>
-                                                </button>
-                                                <i>0</i>
-                                                <button class="add">
-                                                    <strong></strong>
-                                                </button>
-                                                <i class="price">25</i>
-                                            </div>
-                                            </p>
+                            <div class="right-con" th:each="categorylist : ${categories}">
+                            <ul th:each="category : ${categorylist}">
+                                <li th:each="goods : ${category.goods}">
+                                    <div class="menu-img"><img src="img/pic.png" width="55" height="55" /></div>
+                                    <div class="menu-txt" >
+                                        <h4 th:text="${goods.goods}"></h4>
+                                        <p class="list1" th:text="${goods.description}"></p>
+                                        <p class="list2">
+                                            <b>￥<b th:text="${goods.price}"></b></b>
+                                        <div class="btn">
+                                            <button class="minus">
+                                                <strong></strong>
+                                            </button>
+                                            <i>0</i>
+                                            <button class="add">
+                                                <strong></strong>
+                                            </button>
+                                            <i class="price" th:text="${goods.price}"></i>
                                         </div>
-                                    </li>
-                                    <li>
-                                        <div class="menu-img"><img src="img/pic.png" width="55" height="55" /></div>
-                                        <div class="menu-txt">
-                                            <h4>宫保鸡丁</h4>
-                                            <p class="list1">家常菜</p>
-                                            <p class="list2">
-                                                <b>￥25</b>
-                                            <div class="btn">
-                                                <button class="minus">
-                                                    <strong></strong>
-                                                </button>
-                                                <i>0</i>
-                                                <button class="add">
-                                                    <strong></strong>
-                                                </button>
-                                                <i class="price">25</i>
-                                            </div>
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="right-con">
-                                <ul>
-                                    <li>
-                                        <div class="menu-img"><img src="img/pic.png" width="55" height="55" /></div>
-                                        <div class="menu-txt">
-                                            <h4>京酱肉丝</h4>
-                                            <p class="list1">家常菜</p>
-                                            <p class="list2">
-                                                <b>￥25</b>
-                                            <div class="btn">
-                                                <button class="minus">
-                                                    <strong></strong>
-                                                </button>
-                                                <i>0</i>
-                                                <button class="add">
-                                                    <strong></strong>
-                                                </button>
-                                                <i class="price">25</i>
-                                            </div>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="menu-img"><img src="img/pic.png" width="55" height="55" /></div>
-                                        <div class="menu-txt">
-                                            <h4>京酱肉丝</h4>
-                                            <p class="list1">家常菜</p>
-                                            <p class="list2">
-                                                <b>￥25</b>
-                                            <div class="btn">
-                                                <button class="minus">
-                                                    <strong></strong>
-                                                </button>
-                                                <i>0</i>
-                                                <button class="add">
-                                                    <strong></strong>
-                                                </button>
-                                                <i class="price">25</i>
-                                            </div>
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                         </div>
                         <div class="footer" >
                             <div class="left">已选：
@@ -165,8 +91,24 @@
 			<span id="totalcountshow">0</span>份　总计：￥<span id="totalpriceshow">0</span></span>元
                             </div>
                             <div class="right">
-                                <a id="btnselect" class="xhlbtn  disable" href="javascript:void(0)">去结算</a>
+                                <a id="btnselect" class="xhlbtn  disable" href="javascript:void(0)">前往购物车</a>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="shopping_cart" style="display: none">
+                        <div class="ly"></div>
+                        <div class="shopping_list">
+                            <div class="shopping_cart_head">
+                                <p style="font-size: 1.6em;color: black;border-left: 8px red solid;padding: 10px;">购物车详情</p><a href="###">清空购物车</a>
+                            </div>
+                            <table fitColumns="true" id="tab">
+                                <tr>
+                                    <td field="name">名称</td>
+                                    <td field="price">价格</td>
+                                    <td field="num">数量</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
 
@@ -275,18 +217,25 @@
                 }
             };
             //选项卡
-            $(".con>div").hide();
-            $(".con>div:eq(0)").show();
+            $(".con>li").hide();
+            $(".con>li:eq(0)").show();
 
-            $(".left-menu li").click(function(){
+            $(".left-menu div ul li").click(function(){
                 $(this).addClass("active").siblings().removeClass("active");
-                var n = $(".left-menu li").index(this);
-                $(".left-menu li").index(this);
+                var n = $(".left-menu div li").index(this);
+                $(".left-menu div li").index(this);
                 $(".con>div").hide();
                 $(".con>div:eq("+n+")").show();
             });
         });
         //]]>
+
+        $(document).ready(function () {
+            $('#btnselect').click(function () {
+                $('.shopping_cart').show();
+            })
+        })
+
     </script>
 </body>
 </html>

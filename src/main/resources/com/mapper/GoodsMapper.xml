@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.GoodsMapper">
+
+    <select id="getAllByCategoryId" parameterType="int" resultType="Goods">
+        SELECT * FROM goods WHERE categoryId = #{categoryId}
+    </select>
+
+    <insert id="addGoods" parameterType="Goods">
+        INSERT INTO goods(goods,description,price,repertory,categoryId,status)
+        VALUE (#{goods},#{description},#{price},#{repertory},#{categoryId},0)
+    </insert>
+
+    <update id="addRepertory" parameterType="Goods">
+        UPDATE goods
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="repertory!=null">repertory = repertory + #{repertory}</if>
+        </trim>
+        WHERE goodsId = #{goodsId}
+    </update>
+
+    <update id="buyRepertory" parameterType="Goods">
+        UPDATE goods
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="repertory!=null">repertory = repertory - #{repertory}</if>
+        </trim>
+        WHERE goodsId = #{goodsId}
+    </update>
+
+</mapper>

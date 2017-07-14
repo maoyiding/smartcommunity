@@ -35,7 +35,7 @@ a, a.link:hover{
     overflow-y:scroll;
     height: 1200px;
 }
-.left-menu ul li{
+.left-menu  ul li{
     line-height:60px;
     width:100%;
     text-align:center;
@@ -44,7 +44,7 @@ a, a.link:hover{
     color:#333;
     border-bottom:1px dashed #ddd;
 }
-.left-menu ul li.active{
+.left-menu  ul li.active{
     color:#f34b3f !important;
     background-color:#fff;
 }
@@ -258,4 +258,56 @@ a, a.link:hover{
 
 .prccom-con p{
     font-size: 14px;
+}
+
+.shopping_cart{
+    width: 100%;
+    margin-bottom: 129px;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+}
+.ly{
+    width: 100%;
+    height: 400px;
+    background-color: black;
+    opacity: 0.4;
+}
+.shopping_list{
+    width: 100%;
+    min-height: 800px;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column nowrap;
+    background-color: white;
+}
+.shopping_cart_head{
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    background-color: #DCDCDC;
+}
+.shopping_cart_head a{
+    font-size: 1.6em;
+    color: black;
+    padding: 10px;
+}
+table,tr{
+    width: 100%;
+    border-bottom: 2px #DCDCDC solid;
+    border-collapse: collapse;
+}
+
+td{
+    width: 30%;
+    color: black;
+    font-size: 1.8em;
+    text-align: center;
+    border-bottom: 2px #DCDCDC solid;
 }

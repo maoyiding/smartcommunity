@@ -18,7 +18,7 @@
             <trim prefix="SET" suffixOverrides=",">
                 <if test="status!=null">status = 1</if>
             </trim>
-            WHERE id = #{id}
+            WHERE bannerId = #{bannerId}
     </update>
 
     <update id="closeBanner" parameterType="Banner" >
@@ -26,11 +26,11 @@
                 <trim prefix="SET" suffixOverrides=",">
                     <if test="status!=null">status = 0</if>
                 </trim>
-                WHERE id = #{id}
+                WHERE bannerId = #{bannerId}
     </update>
 
     <select id="getBannerById" parameterType="int" resultType="Banner">
-        SELECT * FROM banner WHERE id = #{id}
+        SELECT * FROM banner WHERE bannerId = #{bannerId}
     </select>
 
 </mapper>

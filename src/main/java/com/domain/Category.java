@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by maoyiding on 17-7-10.
@@ -15,4 +16,5 @@ import java.io.Serializable;
 public class Category implements Serializable {
     private int categoryId;
     private String category;
+    private List<Goods> goods;
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="css/category.css" />
+</head>
+<body>
+<div id="dcMain">
+    <!-- 当前位置 -->
+    <div id="urHere"><strong>添加商品</strong></div>
+    <div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
+        <h3><a href="/toProduct" class="actionBtn">商品列表</a>添加商品</h3>
+        <form action="/addProduct" method="post" >
+            <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
+                <tr>
+                    <td width="90" align="right">商品名称</td>
+                    <td>
+                        <input type="text" name="goods" value="" size="40" class="inpMain"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">商品分类</td>
+                    <td>
+                        <select name="categoryId" >
+
+                            <option value="0">未分类</option>
+                            <div th:each="category : ${categories}">
+                                <option th:text="${category.category}" th:value="${category.categoryId}">未分类</option>
+                            </div>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">商品价格</td>
+                    <td>
+                        <b>￥</b>
+                        <input type="text" name="price" value="0" size="20" class="inpMain"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">库存</td>
+                    <td>
+                        <input type="text" name="repertory" value="" size="15" class="inpMain"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">缩略图</td>
+                    <td>
+                        <input type="file" name="image" size="38" class="inpFlie"/>
+                        <img src="" /></td>
+                </tr>
+                <tr>
+                    <td align="right">产品描述</td>
+                    <td>
+                        <input type="text" name="description" value="" size="50" class="inpMain"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input name="submit" class="btn" type="submit" value="提交"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

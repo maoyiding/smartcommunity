@@ -1,26 +1,21 @@
 package com.controller;
 
-import com.domain.Banner;
-import com.domain.City;
-import com.domain.Community;
-import com.domain.People;
+import com.domain.*;
 import com.mapper.PeopleMapper;
-import com.service.BannerService;
-import com.service.CityService;
-import com.service.CommunityService;
-import com.service.PeopleService;
+import com.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,6 +39,15 @@ public class PeopleController {
 
     @Autowired
     BannerService bannerService;
+
+    @Autowired
+    CategoryService categoryService;
+
+    @Autowired
+    GoodsService goodsService;
+
+    @Autowired
+    AppraiseService appraiseService;
 
     @GetMapping
     public String toUserIndex(Model model){
@@ -192,8 +196,36 @@ public class PeopleController {
     }
 
     @GetMapping("/toStore")
-    public String toStore(){
+    public String toStore(Model model){
+
+        List categories = new ArrayList();
+        List<Category> categoryList = categoryService.getAll();
+        for (Category category : categoryList){
+
+            category.setGoods(goodsService.getAllByCategoryId(category.getCategoryId()));
+            categories.add(category);
+
+        }
+        System.out.println(categories);
+        model.addAttribute("categories" , categories);
+
         return "/store";
     }
 
+    @GetMapping("/toAppraise")
+    public String toAppraise(){
+        return "/appraise";
+    }
+
+    @PostMapping("/addAppraise")
+    public String addAppraise(Appraise appraise){
+        Date time = new Date();
+        String sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(time);
+        Timestamp timestamp =Timestamp.valueOf(sdf);
+        appraise.setTime(timestamp);
+
+        appraiseService.addAppraise(appraise);
+
+        return null;
+    }
 }

@@ -1,20 +1,12 @@
 package com.controller;
 
-import com.domain.Banner;
-import com.domain.City;
-import com.domain.Community;
-import com.service.BannerService;
-import com.service.CityService;
-import com.service.CommunityService;
-import com.service.QiniuUploadService;
+import com.domain.*;
+import com.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +29,12 @@ public class BackController {
 
     @Autowired
     private CommunityService communityService;
+
+    @Autowired
+    private CategoryService categoryService;
+
+    @Autowired
+    private GoodsService goodsService;
 
     @GetMapping("/back")
     public String toBack(){
@@ -104,7 +102,7 @@ public class BackController {
         List<Banner> u = bannerService.getAll();
         System.out.println(banner);
         for(Banner banners : u){
-            if(banner.getId() == banners.getId()){
+            if(banner.getBannerId() == banners.getBannerId()){
                 if(banner.getStatus()== 1){
                     bannerService.closeBanner(banner);
                     break;
@@ -118,5 +116,71 @@ public class BackController {
         return "backstage/adv";
     }
 
+
+    @GetMapping("/toCategory")
+    public String toCategory(Model model){
+        List<Category> categories = categoryService.getAll();
+        model.addAttribute("categories",categories);
+        return "backstage/category";
+    }
+
+
+    @GetMapping("/toAddCategory")
+    public String addCategory(){
+        return "backstage/addcategory";
+    }
+
+    @PostMapping("/addCategory")
+    public String addCategory(Category category,Model model){
+        categoryService.addCategory(category);
+        List<Category> categories = categoryService.getAll();
+        model.addAttribute("categories",categories);
+        return toCategory(model);
+    }
+
+    @GetMapping("/toProduct")
+    public String toProduct(Model model){
+        List categories = new ArrayList();
+        List<Category> categoryList = categoryService.getAll();
+        for (Category category : categoryList){
+
+            category.setGoods(goodsService.getAllByCategoryId(category.getCategoryId()));
+            categories.add(category);
+
+        }
+        System.out.println(categories);
+        model.addAttribute("categories" , categories);
+        return "backstage/product";
+    }
+
+    @GetMapping("/toAddproduct")
+    public String toAddproduct(Model model){
+        List<Category> categories  = categoryService.getAll();
+        model.addAttribute("categories",categories);
+        return "backstage/addproduct";
+    }
+
+    @PostMapping("/addProduct")
+    public String addProduct(Goods goods,Model model){
+        goodsService.addGoods(goods);
+        List categories = new ArrayList();
+        List<Category> categoryList = categoryService.getAll();
+        for (Category category : categoryList){
+
+            category.setGoods(goodsService.getAllByCategoryId(category.getCategoryId()));
+            categories.add(category);
+
+        }
+        System.out.println(categories);
+        model.addAttribute("categories" , categories);
+        return toProduct(model);
+    }
+
+    @PostMapping("/shelves")
+    @ResponseBody
+    public String shelves( @RequestBody Goods goods){
+
+        return null;
+    }
 }
 

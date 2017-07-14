@@ -14,7 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class Banner implements Serializable{
 
-    private int id;
+    private int bannerId;
     private String url;
     private int status;
 }
